@@ -63,7 +63,7 @@ export const useUserAction = () => {
 function mockCreateUser(user: IUser) {
   const promise = new Promise<IUser>((resolve, reject) => {
     const delay = Math.random() * 1000;
-    const shouldPass = Math.random() > 0.2; // 80% success rate
+    const shouldPass = Math.random() > 0.3; // 70% success rate
     setTimeout(() => {
       if (shouldPass) resolve({ ...user, id: Math.random().toString() });
       else reject(new Error("random fail"));
