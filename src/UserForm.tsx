@@ -1,7 +1,7 @@
 import React, { memo, useContext, useCallback } from "react";
 
 import { UserContext, useUserAction } from "./UserContainer";
-import { useLoadingCallback } from "./useLoadingCallback";
+import { useAsyncCallback } from "./useAsyncCallback";
 
 export const UserForm = memo(() => {
   const { userMap } = useContext(UserContext);
@@ -14,7 +14,7 @@ export const UserForm = memo(() => {
       }),
     [asyncAddUser]
   );
-  const [onClick, isLoading, error] = useLoadingCallback<Error>(addUser);
+  const [onClick, isLoading, error] = useAsyncCallback<Error>(addUser);
   const userList = Object.values(userMap);
   return (
     <div>
