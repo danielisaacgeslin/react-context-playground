@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { memo } from "react";
 
-function App() {
+import { UserProvider } from "./UserContainer";
+import { UserForm } from "./UserForm";
+import { RenderCount } from "./RenderCount";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <div style={{ padding: 15 }}>
+        <div>
+          <p>count: <RenderCount /></p>
+        </div>
+        <div>
+          <p>consumer 1</p>
+          <UserForm />
+          <p>----</p>
+          <UserForm />
+        </div>
+        <div>
+          <p>consumer 2</p>
+          <UserForm />
+        </div>
+      </div>
+    </UserProvider>
   );
-}
+};
 
-export default App;
+export default memo(App);
